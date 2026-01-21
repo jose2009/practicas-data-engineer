@@ -1,0 +1,55 @@
+#lector de numero impar
+def main():
+
+    numero = int(input("ingrese numero impar: "))
+
+    while numero % 2==0:
+        print("el numero ingresado no es impar.")
+        numero = int(input("ingrese un numero impar: "))
+
+    print("numero impar ingresado correctamente: ", numero)
+#pedido de numeros y leugo hacer media aritmetica
+def main_2():
+
+        cantidad = int(input("ingrese cantidad de num: "))
+
+        suma = 0
+
+        for i in range(cantidad):
+            numero = float(input("ingrese el numero: {i+1}" ))
+            suma += numero
+
+        media = suma/cantidad
+        print("la media artmetica es:", media)
+#listas
+def main_3():
+     print( list(range(0,11)))
+     print( list(range(-10,1)))
+     print(list(range(0,21,2)))
+     print( list(range(-19,0,2)))
+     print(list(range(0,51,5)))
+#ej-4
+def main_4():
+     lista_1 = [1,2,3,4,5,6,7,2]
+     lista_2 = [9,8,7,6,5,4,8]
+     lista_comun = list(set(lista_1) & set(lista_2))
+     print(lista_comun)
+
+#ej 5
+def main_5():
+     suma = 0
+     for numero in range (1,101,2):
+          suma += numero
+     print("la suma de los numeros impares es:", suma)
+ #contador de elemento
+def main_6():
+     lista = [1,4,2,5,4,3,4,6,2,4,7]
+     elemento = 4
+
+     cantidad = lista.count(elemento)
+
+     print("el elemento aparece:", cantidad, "veces")
+
+
+if __name__ == "__main__":
+     main_6()

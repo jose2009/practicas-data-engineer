@@ -1,0 +1,56 @@
+--ej1--
+SELECT *
+from agents
+where name like 'M%' or name like '%o';
+--ej2--
+SELECT distinct occupation
+from customers
+where occupation like '%Engineer%'
+order by occupation asc;
+--ej3--
+SELECT customerid, name,
+    case
+        when age > 30 then 'si'
+        else 'no'
+    end as Mayor30
+from customers
+order by name desc; 
+--ej4--
+SELECT c.customerid, c.name, ca.callid, ca.productsold,
+    case
+        when c.age > 30 then 'mayor a 30'
+        else 'menor o igual a 30'
+    end as Edad
+    from customers c
+    join calls ca on c.customerid = ca.customerid
+    where c.occupation like '%Engineer%';
+--ej5--
+SELECT sum(productsold) as Total_ventas, count(*) as ncalls
+    from customers cu 
+    join calls ca on ca.customerid = cu.customerid
+    where cu.occupation like '%Engineer%';
+--ej6--
+SELECT a.name as AgentName, count (*) as Ncalls, min(ca.duration) as Shortest, max(ca.duration) as Longest, round(avg(ca.duration),2), sum(ca.productsold) as TotalSales
+from calls ca
+    join agents a on ca.agentid = a.agentid
+    where ca.pickedup = 1
+    group by AgentName
+    order by AgentName;
+--ej7-- 
+SELECT a.name,
+    avg(
+        case
+            when ca.productsold =1 and ca.pickedup =1
+            then ca.duration
+        end 
+    )as avgsecondstosell,
+    avg(
+        case
+            when ca.productsold = 0 and ca.pickedup =1
+            then ca.duration
+        end
+    )as avgfornotsell
+    from calls ca 
+    join agents a on ca.agentid = a.agentid
+    group by a.name
+    order by a.name asc;    

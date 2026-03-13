@@ -23,4 +23,3 @@ def upload_dataframe(df, table_name):
         index = true
     )
     print(f"datos cargados en tabla{table_name}")
-    

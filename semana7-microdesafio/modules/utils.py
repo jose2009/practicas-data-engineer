@@ -1,6 +1,7 @@
 #extraemos los datos desde google trends
 from pytrends.request import TrendReq
 import pandas as pd 
+import time
 
 def get_trends(country):
     keywords =["Sea Level", "Weather","Temperatures", "Carbon Dioxide","Global Warming"]
@@ -17,6 +18,7 @@ def get_trends(country):
     if "IsPartial" in df.columns:
         df = df.drop(columns = ["IsPartial"])
     
+    time.sleep(20)
     return df
 
 def save_parquet(df, country):

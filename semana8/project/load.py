@@ -44,6 +44,6 @@ def load_to_redshift(df):
 
         logging.info("Datos caargados en redshift correctamente")
 
-        except Exception as e:
+    except Exception as e:
             logging.error(f"error en carga: {e}")
             raise

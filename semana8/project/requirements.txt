@@ -1,0 +1,3 @@
+pandas
+anonymizedf
+psycopg2-binary

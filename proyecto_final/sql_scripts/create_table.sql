@@ -6,4 +6,5 @@ create table crypto_market_history(
     market_cap float,
     volume float,       --volumen de operaciones
     ingestion_timestamp timestamp   --fecha en que se carga el dato
+    primary key (crypto_name, date)
 );

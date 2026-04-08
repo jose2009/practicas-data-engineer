@@ -2,6 +2,7 @@ import pandas as pd
 #se importa la funciones
 from modules.extract import extract_data
 from modules.transform import transform_data
+from modules.load import load_to_redshift
 #criptos que vamos a usar
 CRYPTOS = ["bitcoin", "ethereum", "solana"]
 
@@ -24,7 +25,15 @@ def main():
     #se guarda en csv
     df.to_csv("crypto_market_history.csv", index=False)
 
+    #eliminar duplicados
+    df = df.drop_duplicates(subset=[¨"crypto_name","date"])
+
+    #eliminar nulos
+    df = df.dropna()
+
+    
     print("Proceso finalizado corectamente.")
 
 if __name__ == "__main__":
     main()
+    load_to_redshift(df)
